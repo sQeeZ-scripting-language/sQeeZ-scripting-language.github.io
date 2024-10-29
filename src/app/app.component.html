@@ -1,0 +1,9 @@
+<div class="app-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="toolbar">
+    <div class="actions">
+      <button mat-icon-button (click)="toggleTheme()" [matTooltip]="currentTheme === 'light' ? 'Dark Mode' : 'Light Mode'">
+        <mat-icon> {{ currentTheme === 'light' ? 'light_mode' : 'dark_mode' }} </mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>

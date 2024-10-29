@@ -1,0 +1,39 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.is-mobile .toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: right;
+    height: 4rem;
+    background-color: var(--toolbar);
+    color: var(--font-color);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+:host-context(.light-theme) {
+    button {
+        color: var(--font-color);
+    }
+
+    button:hover {
+        background-color: rgba(255, 171, 242, 0.75) !important;
+    }
+}
