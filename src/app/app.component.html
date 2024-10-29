@@ -1,9 +1,16 @@
 <div class="app-container" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar class="toolbar">
+    <div class="sQeeZ">
+      <img src="logo.jpg" alt="sQeeZ-Scripting-Language" class="logo">
+      <img src="slogan.png" alt="Slogan" class="slogan">
+    </div>
     <div class="actions">
       <button mat-icon-button (click)="toggleTheme()" [matTooltip]="currentTheme === 'light' ? 'Dark Mode' : 'Light Mode'">
         <mat-icon> {{ currentTheme === 'light' ? 'light_mode' : 'dark_mode' }} </mat-icon>
       </button>
     </div>
   </mat-toolbar>
+  <div class="content-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
+  </div>
 </div>
