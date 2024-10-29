@@ -1,0 +1,37 @@
+html {
+    scroll-behavior: smooth;
+    background-color: #181818;
+}
+
+html,
+body {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow: hidden;
+}
+
+.dark-theme {
+    background-color: #222222;
+    --background-color: #222222;
+    --font-color: white;
+    --toolbar: #424242;
+}
+
+.light-theme {
+    background-color: #f5f5f5;
+    --background-color: #f5f5f5;
+    --font-color: black;
+    --toolbar: #F5F5F5;
+}
+
+app-root {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+}
