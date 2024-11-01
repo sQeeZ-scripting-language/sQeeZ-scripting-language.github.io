@@ -19,11 +19,11 @@
           <h3>Getting Started</h3>
         </mat-card-title>
         <mat-card-content class="download">
-          <button mat-raised-button class="detected-os">Download <sup>{{ os }}</sup></button>
+          <button mat-raised-button class="detected-os" (click)="download(os)">Download <sup>{{ os }}</sup></button>
           <div class="other-os">
             @for(item of oss; track item) {
               @if (item !== os) {
-                <button mat-stroked-button>{{ item }}</button>
+                <button mat-stroked-button (click)="download(item)">{{ item }}</button>
               }
             }
           </div>

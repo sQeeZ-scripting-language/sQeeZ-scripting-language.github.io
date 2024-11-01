@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Inject, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,7 +24,10 @@ export class AppComponent implements OnInit, OnDestroy {
     
   private _mobileQueryListener: () => void;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private http: HttpClient
+  ) {
     const changeDetectorRef = inject(ChangeDetectorRef);
     const media = inject(MediaMatcher);
 
@@ -45,6 +49,17 @@ export class AppComponent implements OnInit, OnDestroy {
   toggleTheme(): void {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
     this.setTheme();
+  }
+
+  download(os: string): void {
+    const url = "https://api.github.com/repos/sQeeZ-scripting-language/interpreter/releases/latest";
+    this.http.get(url).subscribe((data: any) => {
+      data.assets.find((asset: any) => {
+        if (asset.browser_download_url.includes(os.toLowerCase())) {
+          window.location.href = asset.browser_download_url;
+        }
+      });
+    });
   }
 
   private getSystemTheme(): string {
