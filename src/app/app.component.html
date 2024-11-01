@@ -10,7 +10,25 @@
       </button>
     </div>
   </mat-toolbar>
-  <div class="content-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <div class="content-container" [style.marginTop.px]="mobileQuery.matches ? 80 : 0">
+    <div class="banner">
+      <mat-card></mat-card>
 
+      <mat-card class="getting-started">
+        <mat-card-title>
+          <h3>Getting Started</h3>
+        </mat-card-title>
+        <mat-card-content class="download">
+          <button mat-raised-button class="detected-os">Download <sup>{{ os }}</sup></button>
+          <div class="other-os">
+            @for(item of oss; track item) {
+              @if (item !== os) {
+                <button mat-stroked-button>{{ item }}</button>
+              }
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectorRef, Component, Inject, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -9,7 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatCardModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -17,6 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'sQeeZ-scripting-language.github.io';
   public mobileQuery!: MediaQueryList;
   public currentTheme: string = 'dark';
+  public os: string = '';
+  public oss: string[] = ['macOS', 'Windows', 'Linux'];
     
   private _mobileQueryListener: () => void;
 
@@ -32,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentTheme = this.getSystemTheme();
     this.setTheme();
+    this.setOS();
   }
 
   ngOnDestroy(): void {
@@ -51,6 +55,17 @@ export class AppComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
       document.body.classList.toggle('light-theme', this.currentTheme === 'light');
+    }
+  }
+
+  private setOS(): void {
+    const userAgent = navigator.userAgent;
+    if (/Mac/i.test(userAgent)) {
+      this.os = 'macOS';
+    } else if (/Win/i.test(userAgent)) {
+      this.os = 'Windows';
+    } else {
+      this.os = 'Linux';
     }
   }
 }
