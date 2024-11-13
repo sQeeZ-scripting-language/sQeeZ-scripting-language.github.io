@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public currentTheme: string = 'dark';
   public os: string = '';
   public oss: string[] = ['macOS', 'Windows', 'Linux'];
+  public code: string = '@5,10,15,20,25 |> MAP(+3) |> FILTER(>15) |> REDUCE(+0);\nvar obj = @a:1,b:false,c:"last value";\nlog(obj);'
     
   private _mobileQueryListener: () => void;
 

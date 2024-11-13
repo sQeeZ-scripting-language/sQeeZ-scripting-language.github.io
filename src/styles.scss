@@ -19,6 +19,8 @@ body {
     --font-color: white;
     --toolbar: #424242;
     --content: #303030;
+    --editor: #1f1f1f;
+    --highlight: rgba(255, 171, 242, 0.75);
 }
 
 .light-theme {
@@ -27,6 +29,8 @@ body {
     --font-color: black;
     --toolbar: #F5F5F5;
     --content: #FFFFFF;
+    --editor: #ffffff;
+    --highlight: rgba(255, 171, 242, 0.75);
 }
 
 app-root {

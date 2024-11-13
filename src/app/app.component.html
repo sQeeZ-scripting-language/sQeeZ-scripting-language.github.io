@@ -12,8 +12,14 @@
   </mat-toolbar>
   <div class="content-container" [style.marginTop.px]="mobileQuery.matches ? 80 : 0">
     <div class="banner">
-      <mat-card></mat-card>
-
+      <mat-card class="code-snippet">
+        <mat-card-title class="title">
+          <h3>sQeeZ Scripting Language</h3>
+        </mat-card-title>
+        <mat-card-content class="editor">
+          {{ code }}
+        </mat-card-content>
+      </mat-card>
       <mat-card class="getting-started">
         <mat-card-title>
           <h3>Getting Started</h3>
