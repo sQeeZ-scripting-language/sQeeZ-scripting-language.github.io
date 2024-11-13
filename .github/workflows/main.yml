@@ -63,3 +63,4 @@ jobs:
           publish_dir: ./root
           commit_message: 'Deploy to GitHub Pages'
           allow_empty_commit: true
+          clean: true
