@@ -51,11 +51,15 @@ jobs:
       - name: Create .nojekyll file
         run: echo > ./dist/s-qee-z-scripting-language.github.io/browser/.nojekyll
 
+      - name: Move files to root for deployment
+        run: |
+          mkdir -p ./root
+          cp -r ./dist/s-qee-z-scripting-language.github.io/browser/* ./root/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/s-qee-z-scripting-language.github.io/browser
-          destination_dir: /
+          publish_dir: ./root
           commit_message: 'Deploy to GitHub Pages'
           allow_empty_commit: true
