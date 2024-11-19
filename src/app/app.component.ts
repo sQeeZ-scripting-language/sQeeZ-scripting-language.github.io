@@ -1,17 +1,17 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Inject, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GridComponent } from './components/grid/grid.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatCardModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, BannerComponent, GridComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,15 +19,11 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'sQeeZ-scripting-language.github.io';
   public mobileQuery!: MediaQueryList;
   public currentTheme: string = 'dark';
-  public os: string = '';
-  public oss: string[] = ['macOS', 'Windows', 'Linux'];
-  public code: string = '@5,10,15,20,25 |> MAP(+3) |> FILTER(>15) |> REDUCE(+0);\nvar obj = @a:1,b:false,c:"last value";\nlog(obj);'
     
   private _mobileQueryListener: () => void;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private http: HttpClient
   ) {
     const changeDetectorRef = inject(ChangeDetectorRef);
     const media = inject(MediaMatcher);
@@ -40,7 +36,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentTheme = this.getSystemTheme();
     this.setTheme();
-    this.setOS();
   }
 
   ngOnDestroy(): void {
@@ -52,17 +47,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.setTheme();
   }
 
-  download(os: string): void {
-    const url = "https://api.github.com/repos/sQeeZ-scripting-language/interpreter/releases/latest";
-    this.http.get(url).subscribe((data: any) => {
-      data.assets.find((asset: any) => {
-        if (asset.browser_download_url.includes(os.toLowerCase())) {
-          window.location.href = asset.browser_download_url;
-        }
-      });
-    });
-  }
-
   private getSystemTheme(): string {
     return (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
   }
@@ -71,17 +55,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
       document.body.classList.toggle('light-theme', this.currentTheme === 'light');
-    }
-  }
-
-  private setOS(): void {
-    const userAgent = navigator.userAgent;
-    if (/Mac/i.test(userAgent)) {
-      this.os = 'macOS';
-    } else if (/Win/i.test(userAgent)) {
-      this.os = 'Windows';
-    } else {
-      this.os = 'Linux';
     }
   }
 }
