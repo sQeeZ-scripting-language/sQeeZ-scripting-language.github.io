@@ -20,7 +20,6 @@ export class GridComponent implements OnInit {
   }
 
   redirectTo(url: string): void {
-    // new tab
     window.open(url, '_blank');
   }
 }
