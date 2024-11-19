@@ -22,6 +22,8 @@ body {
     --content: #303030;
     --editor: #1f1f1f;
     --highlight: rgba(255, 171, 242, 0.75);
+    --grid: rgba(255, 255, 255, 0.1);
+    --grid-hover: rgba(255, 255, 255, 0.25);
 }
 
 .light-theme {
@@ -30,8 +32,10 @@ body {
     --font-color: black;
     --toolbar: #F5F5F5;
     --content: #FFFFFF;
-    --editor: #ffffff;
+    --editor: #dedede;
     --highlight: rgba(255, 171, 242, 0.75);
+    --grid: rgba(0, 0, 0, 0.1);
+    --grid-hover: rgba(0, 0, 0, 0.25);
 }
 
 app-root {

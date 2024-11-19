@@ -15,15 +15,15 @@ grid-container {
     height: 100%;
     text-align: center;
     padding: 1.5em;
-    background: rgb(255, 255, 255, 0.1);
-    color: white;
+    background: var(--grid);
+    color: var(--font-color);
     transition: 0.5s;
     cursor: pointer;
 }
 
 .grid-item:hover {
     scale: 1.05;
-    background: rgb(255, 255, 255, 0.25);
+    background: var(--grid-hover);
 }
 
 .image {
