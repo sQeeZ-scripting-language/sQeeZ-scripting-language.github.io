@@ -1,0 +1,13 @@
+<div class="grid-container">
+    <div class="grid">
+        @for (item of gridItems; track item) {
+            <mat-card class="grid-item" (click)="redirectTo(item.url)">
+                <mat-card-title> {{ item.title }} </mat-card-title>
+                <mat-card-content>
+                    <p> {{ item.description }} </p>
+                    <img [src]="item.image" alt="{{ item.title }}" class="image">
+                </mat-card-content>
+            </mat-card>
+        }
+    </div>
+</div>

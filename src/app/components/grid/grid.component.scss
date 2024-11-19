@@ -1,0 +1,54 @@
+grid-container {
+    position: relative;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 80vw;
+    gap: 5vw;
+    padding: 5vw 10vw;
+}
+
+.grid-item {
+    height: 100%;
+    text-align: center;
+    padding: 1.5em;
+    background: rgb(255, 255, 255, 0.1);
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.grid-item:hover {
+    scale: 1.05;
+    background: rgb(255, 255, 255, 0.25);
+}
+
+.image {
+    width: 30%;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        padding: 2.5vw 2.5vw;
+    }
+
+    .grid {
+        width: 95vw;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3vw;
+    }
+
+    .grid-item {
+        padding-bottom: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
