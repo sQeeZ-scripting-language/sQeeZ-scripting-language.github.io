@@ -1,0 +1,25 @@
+<div class="banner-container">
+    <mat-card class="code-snippet">
+        <mat-card-title class="title">
+            <h3>sQeeZ Scripting Language</h3>
+        </mat-card-title>
+        <mat-card-content class="editor">
+            <pre><code>{{ code }}</code></pre>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="getting-started">
+        <mat-card-title>
+            <h3>Getting Started</h3>
+        </mat-card-title>
+        <mat-card-content class="download">
+            <button mat-raised-button class="detected-os" (click)="download(os)">&nbsp;Download <sup>{{ os }}</sup>&nbsp;</button>
+            <div class="other-os">
+                @for(item of oss; track item) {
+                    @if (item !== os) {
+                        <button mat-stroked-button (click)="download(item)">{{ item }}</button>
+                    }
+                }
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
